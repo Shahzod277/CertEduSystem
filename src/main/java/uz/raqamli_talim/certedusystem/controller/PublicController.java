@@ -1,5 +1,6 @@
 package uz.raqamli_talim.certedusystem.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +20,8 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/public")
+@Tag(name = "public-controller", description = "ochiq apilar")
+
 @RequiredArgsConstructor
 public class PublicController {
 

@@ -10,7 +10,6 @@
 //import uz.raqamli_talim.certedusystem.api_integration.fast_api.gtcp.PinflAndSerialNumber;
 //import uz.raqamli_talim.certedusystem.model.ResponseDto;
 //import uz.raqamli_talim.certedusystem.model.request.AdminRequest;
-//import uz.raqamli_talim.certedusystem.service.AdminService;
 //
 //import java.security.Principal;
 //
