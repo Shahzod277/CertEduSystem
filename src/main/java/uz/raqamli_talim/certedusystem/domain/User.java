@@ -19,9 +19,7 @@ import java.util.Set;
 @Table(name = "users", indexes = {
         @Index(name = "idx_users_phone_number", columnList = "phone_number", unique = true),
         @Index(name = "idx_users_pinfl", columnList = "pinfl", unique = true),
-        @Index(name = "idx_users_current_role_id", columnList = "currentRoleId"),
-        @Index(name = "idx_users_university_id", columnList = "university_id")
-})
+        @Index(name = "idx_users_current_role_id", columnList = "currentRoleId")})
 public class User extends AbstractEntity {
 
     private String firstName;
