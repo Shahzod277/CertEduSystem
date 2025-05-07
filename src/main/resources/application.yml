@@ -7,52 +7,43 @@ server:
     key-store-type: PKCS12
     key-password: changeit
     key-store-password: changeit
+
 spring:
   datasource:
-    url: jdbc:postgresql://172.18.10.41:5432/cert_edu
+    url: jdbc:postgresql://172.18.10.41:5432/cert_edu_system
     username: postgres
     password: 2030306
     driver-class-name: org.postgresql.Driver
     hikari:
-      maximum-pool-size: 20
+      maximum-pool-size: 10          # Oldingi 20 o‘rniga 10 qilindi
+      minimum-idle: 2
+      idle-timeout: 30000            # 30 soniya
+      max-lifetime: 1800000          # 30 daqiqa
+      validation-timeout: 5000
       connection-timeout: 20000
+
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+
   main:
     banner-mode: off
+
   jpa:
     open-in-view: false
     show-sql: true
     hibernate:
       ddl-auto: update
 
-#  data:
-#    redis:
-#      host: localhost
-#      port: 6379
 springdoc:
   swagger-ui:
     path: /docs/swagger-ui.html
   api-docs:
     path: /docs
+
 file:
   storage:
     location: /home/software/invest_edu/fileStorage/
   iib_storage:
     iib_location: /home/software/invest_edu/fileStorageIIB/
-#jwt:
-#  secret: '[0-9.a-zA-z_]^+$TutorAcademy9891212skidU3Akj9dfd6kfd5fdASQrFbsMrXh^56409nPgGfd528482'
-#
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-#      base-path: /manage
-#logging:
-#  file:
-#    path: /D:/projects/qabul_x.otm/src/main/resources
-
-
