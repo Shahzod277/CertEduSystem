@@ -1,6 +1,7 @@
 package uz.raqamli_talim.certedusystem.service;
 
 import jakarta.xml.bind.DatatypeConverter;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.core.io.Resource;
@@ -25,7 +26,6 @@ import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static uz.raqamli_talim.certedusystem.enums.ResponseMessage.SUCCESSFULLY;
-
 
 @Service
 public class FileService {
