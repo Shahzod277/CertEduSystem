@@ -5,9 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import uz.raqamli_talim.invest_edu.domain.User;
-import uz.raqamli_talim.invest_edu.model.projection.ORGAdminShortInfoProjection;
-import uz.raqamli_talim.invest_edu.model.projection.UserInfoProjection;
+import uz.raqamli_talim.certedusystem.domain.User;
+import uz.raqamli_talim.certedusystem.model.projection.ORGAdminShortInfoProjection;
+import uz.raqamli_talim.certedusystem.model.projection.UserInfoProjection;
+
 
 import java.util.Optional;
 
@@ -56,8 +57,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             "  left join university un on u.university_id = un.id where ( ?1 is null or u.organization_id = ?1) and ( ?2 is null or u.university_id = ?2)  and ( ?3 is null or u.is_active = ?3) and " +
             " ( ?4 is null or ur.role_id =?4 ) and " +
             "  ( ?5 is null or concat(u.pinfl, u.full_name, u.phone_number, un.name_uz) ilike concat('%',?5,'%')) ", nativeQuery = true)
-    Page<ORGAdminShortInfoProjection> getAllAdmins(Integer organizationId,Integer universityId, Boolean isActive, Integer roleId,
-                                                      String search, Pageable pageable);
+    Page<ORGAdminShortInfoProjection> getAllAdmins(Integer organizationId, Integer universityId, Boolean isActive, Integer roleId,
+                                                   String search, Pageable pageable);
 
 
 //    @Query("select u from User u where u.id = ?1 and u.university.id = ?2")

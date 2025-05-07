@@ -1,5 +1,5 @@
 server:
-  port: 8093
+  port: 8090
   ssl:
     enabled: true
     key-alias: selfsigned
@@ -9,7 +9,7 @@ server:
     key-store-password: changeit
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/cert_edu
+    url: jdbc:postgresql://172.18.10.41:5432/cert_edu
     username: postgres
     password: 2030306
     driver-class-name: org.postgresql.Driver

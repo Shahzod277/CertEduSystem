@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.raqamli_talim.invest_edu.domain.classificatory.Organization;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -49,22 +48,16 @@ public class User extends AbstractEntity {
                     foreignKey = @ForeignKey(name = "FK_USER_ROLE_ROLE")))
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organization_id")
-    private Organization organization;
-    private String position;
-    private Boolean isExpert;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(fatherName, user.fatherName) && Objects.equals(fullName, user.fullName) && Objects.equals(pinfl, user.pinfl) && Objects.equals(givenDate, user.givenDate) && Objects.equals(photo, user.photo) && Objects.equals(birthDate, user.birthDate) && Objects.equals(serialAndNumber, user.serialAndNumber) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(password, user.password) && Objects.equals(currentRoleId, user.currentRoleId) && Objects.equals(currentRoleName, user.currentRoleName) && Objects.equals(roles, user.roles) && Objects.equals(organization, user.organization) && Objects.equals(position, user.position) && Objects.equals(isExpert, user.isExpert);
+        return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(fatherName, user.fatherName) && Objects.equals(fullName, user.fullName) && Objects.equals(pinfl, user.pinfl) && Objects.equals(givenDate, user.givenDate) && Objects.equals(photo, user.photo) && Objects.equals(birthDate, user.birthDate) && Objects.equals(serialAndNumber, user.serialAndNumber) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(password, user.password) && Objects.equals(currentRoleId, user.currentRoleId) && Objects.equals(currentRoleName, user.currentRoleName) && Objects.equals(roles, user.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, fatherName, fullName, pinfl, givenDate, photo, birthDate, serialAndNumber, phoneNumber, password, currentRoleId, currentRoleName, roles, organization, position, isExpert);
+        return Objects.hash(firstName, lastName, fatherName, fullName, pinfl, givenDate, photo, birthDate, serialAndNumber, phoneNumber, password, currentRoleId, currentRoleName, roles);
     }
 }
