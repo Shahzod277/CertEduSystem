@@ -21,7 +21,6 @@ import java.util.Set;
         @Index(name = "idx_users_pinfl", columnList = "pinfl", unique = true),
         @Index(name = "idx_users_current_role_id", columnList = "currentRoleId")})
 public class User extends AbstractEntity {
-
     private String firstName;
     private String lastName;
     private String fatherName;
