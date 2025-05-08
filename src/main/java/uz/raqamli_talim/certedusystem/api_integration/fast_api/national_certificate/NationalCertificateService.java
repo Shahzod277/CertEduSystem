@@ -18,10 +18,10 @@ public class NationalCertificateService {
     private final FastApiTokenService fastApiTokenService;
 
     public List<NationalCertificateResponse> getCertificate(String pinfl) {
-        FastApiTokenResponse token = fastApiTokenService.getTokenGTCP();
+        String token = fastApiTokenService.getToken();
         return webClient.get()
                 .uri("http://172.18.9.171/dtm/certificate-info?pinfl=" + pinfl)
-                .headers(h -> h.setBearerAuth(token.getAccessToken()))
+                .headers(h -> h.setBearerAuth(token))
                 .retrieve()
                 .onStatus(HttpStatus.NOT_FOUND::equals, response -> Mono.empty())
                 .bodyToFlux(NationalCertificateResponse.class)
