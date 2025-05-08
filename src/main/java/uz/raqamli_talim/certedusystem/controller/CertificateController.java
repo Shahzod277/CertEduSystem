@@ -20,9 +20,9 @@ public class CertificateController {
 
 
     @GetMapping("national-certificate/{pinfl}")
-//    @Operation(security = {@SecurityRequirement(name = "bearer-key")},
-//            summary = "milliy sertifikatni olish")
-//    @PreAuthorize("hasAnyRole('SUPERADMIN')")
+    @Operation(security = {@SecurityRequirement(name = "bearer-key")},
+            summary = "milliy sertifikatni olish")
+    @PreAuthorize("hasAnyRole('INTEGRATION')")
     public ResponseEntity<?> getNationalCertificate(@PathVariable("pinfl") String pinfl) {
         ResponseDto response = certificateService.getNationalCertificate(pinfl);
         return ResponseEntity.status(response.getStatusCode()).body(response);

@@ -14,17 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 public class JwtResponse {
 
-    private Integer id;
-    private String firstName;
-    private String lastName;
-    private String fatherName;
     private String username;
     private String jwtToken;
     private List<String> roles = new ArrayList<>();
 
-    public JwtResponse(String username, String jwtToken, List<String> role) {
-        this.username = username;
-        this.jwtToken = jwtToken;
-        this.roles = role;
-    }
 }

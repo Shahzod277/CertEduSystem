@@ -9,9 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import uz.raqamli_talim.certedusystem.api_integration.LoginRequest;
 import uz.raqamli_talim.certedusystem.enums.ResponseMessage;
 import uz.raqamli_talim.certedusystem.model.ResponseDto;
 import uz.raqamli_talim.certedusystem.service.FileService;
+import uz.raqamli_talim.certedusystem.service.UserService;
 import uz.raqamli_talim.certedusystem.utils.Utils;
 
 import java.net.URI;
@@ -26,7 +28,7 @@ import java.util.Objects;
 public class PublicController {
 
 //    private final OneIdServiceApiUser oneIdServiceApiUser;
-//    private final UserService userService;
+    private final UserService userService;
     private final FileService fileService;
     private final Utils utils;
 //    private final ClassificatorService classificatorService;
@@ -79,11 +81,11 @@ public class PublicController {
 //        return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
 //    }
 //
-//    @PostMapping("signIn")
-//    public ResponseEntity<?> signIn(@RequestBody LoginRequest request) {
-//        ResponseDto response = userService.signIn(request);
-//        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
-//    }
+    @PostMapping("signIn")
+    public ResponseEntity<?> signIn(@RequestBody LoginRequest request) {
+        ResponseDto response = userService.signIn(request);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatusCode()));
+    }
 //
 //    @PostMapping(value = "uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {

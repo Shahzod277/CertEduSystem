@@ -85,7 +85,7 @@ public class Utils {
         String jwtToken = jwtTokenProvider.generateJWTToken(userDetails);
         List<String> roles = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
         return new JwtResponse(
-                user.getFullName(),
+                user.getPinfl(),
                 jwtToken,
                 roles);
     }
