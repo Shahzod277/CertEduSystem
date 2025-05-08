@@ -6,8 +6,8 @@ import lombok.Getter;
 public enum ApiConstant {
 
     //fast-api
-    FAST_API_USERNAME("invest_edu"),
-    FAST_API_PASSWORD("5sWQmnVnRgxC8uTX4*G7"),
+    FAST_API_USERNAME("certificate_e-edu"),
+    FAST_API_PASSWORD("XZXSx85$kM!FR8EW7f#Z"),
 
     //ONE ID API
     ONE_ID_LOGIN("khm_qabul"),

@@ -19,7 +19,7 @@ public class CertificateResponse {
     private String subject;
     private Integer subject_id;
     private String ball;
-    private String startDate;
+    private LocalDate startDate;
     private LocalDate endDate;
     private String certNumber;
     private String url;
