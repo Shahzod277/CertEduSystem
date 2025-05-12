@@ -31,7 +31,7 @@ public class CertificateController {
     }
 
 
-    @GetMapping()
+    @GetMapping("national-certificate")
     @Operation(security = {@SecurityRequirement(name = "bearer-key")},
             summary = "milliy sertifikatni olish")
     @PreAuthorize("hasAnyRole('ADMIN')")
@@ -42,7 +42,7 @@ public class CertificateController {
         return certificateService.getCertificates(page, size, search);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("national-certificate/{id}")
     @Operation(security = {@SecurityRequirement(name = "bearer-key")},
             summary = "milliy sertifikatni olish")
     @PreAuthorize("hasAnyRole('ADMIN')")
