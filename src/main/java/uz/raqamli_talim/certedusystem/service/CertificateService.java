@@ -110,14 +110,13 @@ public class CertificateService {
     public Page<CertificateResponse> getCertificates(Integer page, Integer size, String search) {
         if (page > 0) page = page - 1;
         PageRequest pageRequest = PageRequest.of(page, size);
-      return   certificateRepository.getCertificates(search, pageRequest).map(CertificateResponse::new);
+        return certificateRepository.getCertificates(search, pageRequest).map(CertificateResponse::new);
     }
 
     public CertificateResponse getCertificate(Integer id) {
         Certificate certificate = certificateRepository.findById(id).get();
-     return    new   CertificateResponse(certificate);
+        return new CertificateResponse(certificate);
     }
-
 
 
 }
