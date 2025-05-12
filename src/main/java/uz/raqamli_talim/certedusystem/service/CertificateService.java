@@ -1,6 +1,9 @@
 package uz.raqamli_talim.certedusystem.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import uz.raqamli_talim.certedusystem.api_integration.fast_api.national_certificate.CertificateData;
@@ -14,6 +17,7 @@ import uz.raqamli_talim.certedusystem.model.response.CertificateResponse;
 import uz.raqamli_talim.certedusystem.repository.CertificateRepository;
 import uz.raqamli_talim.certedusystem.repository.CertificateTypeRepository;
 
+import java.security.Principal;
 import java.security.cert.CertificateExpiredException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -84,7 +88,6 @@ public class CertificateService {
     }
 
 
-
     private Certificate buildCertificateFromData(String pinfl, CertificateData data, CertificateType certificateType) {
         Certificate certificate = new Certificate();
         certificate.setPinfl(pinfl);
@@ -103,5 +106,18 @@ public class CertificateService {
         certificate.setEndDate(LocalDate.parse(data.getEnd_date()));
         return certificate;
     }
+
+    public Page<CertificateResponse> getCertificates(Integer page, Integer size, String search) {
+        if (page > 0) page = page - 1;
+        PageRequest pageRequest = PageRequest.of(page, size);
+      return   certificateRepository.getCertificates(search, pageRequest).map(CertificateResponse::new);
+    }
+
+    public CertificateResponse getCertificate(Integer id) {
+        Certificate certificate = certificateRepository.findById(id).get();
+     return    new   CertificateResponse(certificate);
+    }
+
+
 
 }
