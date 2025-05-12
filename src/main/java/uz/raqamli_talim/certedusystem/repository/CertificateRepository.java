@@ -16,9 +16,9 @@ public interface CertificateRepository extends JpaRepository<Certificate, Intege
 
     @Query("""
     SELECT c FROM Certificate c
-    WHERE (:search IS NULL OR 
-            CONCAT(c.pinfl, c.firtName, c.lastName, c.fatherName, c.serialNumber, c.certNumber) 
-            LIKE %:search%)
+    WHERE (:search IS NULL OR
+           LOWER(CONCAT(c.pinfl, c.firtName, c.lastName, c.fatherName, c.serialNumber, c.certNumber))
+           LIKE LOWER(CONCAT('%', :search, '%')))
 """)
     Page<Certificate> getCertificates(@Param("search") String search, Pageable pageable);
 
