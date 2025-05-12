@@ -37,7 +37,7 @@ public class CertificateController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     public Page<CertificateResponse> getCertificates(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                      @RequestParam(value = "size", defaultValue = "20") Integer size,
-                                                     @RequestParam(value = "search") String search) {
+                                                     @RequestParam(value = "search",required = false) String search) {
         ;
         return certificateService.getCertificates(page, size, search);
     }
