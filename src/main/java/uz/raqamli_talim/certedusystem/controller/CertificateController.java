@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.raqamli_talim.certedusystem.model.ResponseDto;
+import uz.raqamli_talim.certedusystem.model.projection.CertificateProjection;
 import uz.raqamli_talim.certedusystem.model.response.CertificateResponse;
 import uz.raqamli_talim.certedusystem.service.CertificateService;
 
@@ -35,9 +36,9 @@ public class CertificateController {
     @Operation(security = {@SecurityRequirement(name = "bearer-key")},
             summary = "milliy sertifikatni olish")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public Page<CertificateResponse> getCertificates(@RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                     @RequestParam(value = "size", defaultValue = "20") Integer size,
-                                                     @RequestParam(value = "search",required = false) String search) {
+    public Page<CertificateProjection> getCertificates(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                       @RequestParam(value = "size", defaultValue = "20") Integer size,
+                                                       @RequestParam(value = "search",required = false) String search) {
         ;
         return certificateService.getCertificates(page, size, search);
     }

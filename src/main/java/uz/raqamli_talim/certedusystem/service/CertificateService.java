@@ -13,6 +13,7 @@ import uz.raqamli_talim.certedusystem.domain.Certificate;
 import uz.raqamli_talim.certedusystem.domain.CertificateType;
 import uz.raqamli_talim.certedusystem.enums.ResponseMessage;
 import uz.raqamli_talim.certedusystem.model.ResponseDto;
+import uz.raqamli_talim.certedusystem.model.projection.CertificateProjection;
 import uz.raqamli_talim.certedusystem.model.response.CertificateResponse;
 import uz.raqamli_talim.certedusystem.repository.CertificateRepository;
 import uz.raqamli_talim.certedusystem.repository.CertificateTypeRepository;
@@ -107,10 +108,10 @@ public class CertificateService {
         return certificate;
     }
 
-    public Page<CertificateResponse> getCertificates(Integer page, Integer size, String search) {
+    public Page<CertificateProjection> getCertificates(Integer page, Integer size, String search) {
         if (page > 0) page = page - 1;
         PageRequest pageRequest = PageRequest.of(page, size);
-        return certificateRepository.getCertificates(search, pageRequest).map(CertificateResponse::new);
+        return certificateRepository.getCertificates(search, pageRequest);
     }
 
     public CertificateResponse getCertificate(Integer id) {
