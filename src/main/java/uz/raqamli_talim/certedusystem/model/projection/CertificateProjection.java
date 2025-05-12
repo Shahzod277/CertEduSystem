@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public interface CertificateProjection {
     String getPinfl();
+    String getId();
     String getSerialNumber();
     String getFirtName();
     String getLastName();
